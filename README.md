@@ -1,12 +1,12 @@
-# PDF Question Answering App
+# Resume PDF Question Answering App
 
-This is a Flask application that allows users to upload PDF files and ask questions about their content. The app uses natural language processing and machine learning models to understand the PDF content and provide relevant answers to the user's questions.
+This is a Flask application that allows users to upload resume PDFs and ask questions about the information contained within them. The app utilizes natural language processing and machine learning models to understand the resume content and provide accurate and relevant answers to the user's questions.
 
 ## Features
 
-- Upload and process multiple PDF files
-- Ask questions about the PDF content
-- Get accurate and contextual answers
+- Upload and process multiple resume PDFs
+- Ask questions about the candidate's experience, skills, education, and more
+- Get contextual and concise answers based on the resume content
 
 ## Prerequisites
 
