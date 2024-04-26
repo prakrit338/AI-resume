@@ -4,7 +4,6 @@ This is a Flask application that allows users to upload resume PDFs and ask ques
 
 
 
-
 ## Features
 
 - Upload and process multiple resume PDFs
