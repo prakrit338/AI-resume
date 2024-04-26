@@ -2,7 +2,7 @@
 
 This is a Flask application that allows users to upload resume PDFs and ask questions about the information contained within them. The app utilizes natural language processing and machine learning models to understand the resume content and provide accurate and relevant answers to the user's questions.
 
-
+Screenshot 2024-04-26 at 12.28.12 PM
 
 ## Features
 
