@@ -2,7 +2,6 @@
 
 This is a Flask application that allows users to upload resume PDFs and ask questions about the information contained within them. The app utilizes natural language processing and machine learning models to understand the resume content and provide accurate and relevant answers to the user's questions.
 
-<img width="1390" alt="Screenshot 2024-02-16 at 4 37 36 PM" src="https://github.com/prakrit338/Gemini-Pro-LLM-Application/assets/72137633/10916c33-e9b0-47f2-af4a-bdee8d9daac7">
 
 
 ## Features
