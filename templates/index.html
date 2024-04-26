@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Question Answering</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Resume Question Answering</h1>
+            <p>Ask questions about your Resume files and get instant answers.</p>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="process-pdfs">
+                <form method="post" action="{{ url_for('process_pdfs') }}">
+                    <button type="submit"><i class="fas fa-file-pdf"></i> Process PDFs</button>
+                </form>
+            </div>
+            <div class="question-form">
+                <form id="question-form" method="post">
+                    <label for="question">Enter your question:</label>
+                    <textarea id="question" name="question" placeholder="Type your question here..." required>{{ question }}</textarea>
+                    <button type="submit" id="submit-btn"><i class="fas fa-search"></i> Ask</button>
+                    <div id="loading" class="hidden"><i class="fas fa-spinner fa-spin"></i> Generating answer...</div>
+                </form>
+            </div>
+            {% if answers %}
+                {% for file_name, answer in answers %}
+                    <div class="answer">
+                        <h2><i class="fas fa-file-pdf"></i> {{ file_name }}.pdf</h2>
+                        <pre>{{ answer | markdown }}</pre>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 PDF Question Answering. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        const form = document.getElementById('question-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const loadingDiv = document.getElementById('loading');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            submitBtn.disabled = true;
+            loadingDiv.classList.remove('hidden');
+            form.submit();
+        });
+    </script>
+</body>
+</html>

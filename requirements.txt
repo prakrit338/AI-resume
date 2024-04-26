@@ -1,0 +1,6 @@
+flask
+pypdf2
+langchain
+langchain-google-genai
+google-generativeai
+python-dotenv
