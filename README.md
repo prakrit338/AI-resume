@@ -24,16 +24,27 @@ This is a Flask application that allows users to upload resume PDFs and ask ques
 
 ## Installation
 
-1. Clone the repository:
+1. ```bash
+    git clone https://github.com/prakrit338/AI-resume.git
+    ```
 2. Install the required packages:
+```bash
 pip install -r requirements.txt
-3. Set up the Google Generative AI API credentials by creating a `.env` file with the following content:
-GOOGLE_API_KEY=your_api_key_here
+```
 
+3. Set up the Google Generative AI API credentials by creating a `.env` file with the following content:
+
+```bash
+GOOGLE_API_KEY=your_api_key_here
+```
 ## Usage
 
 1. Run the Flask app:
+```bash
+
 python app.py
+```
+
 2. Open your web browser and navigate to `http://localhost:5000`.
 3. Click the "Process PDFs" button to select and upload your PDF files.
 4. Enter your question in the text area and click "Ask" to get the answer.
@@ -41,6 +52,8 @@ python app.py
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
+Regarding any collab, mail to : 'prakrittimilsina338@gmail.com'
+
 
 ## License
 
