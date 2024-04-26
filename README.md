@@ -6,6 +6,7 @@ This is a Flask application that allows users to upload resume PDFs and ask ques
 ![Screenshot 2024-04-26 at 12 27 54 PM](https://github.com/prakrit338/AI-resume/assets/72137633/890da091-b415-4f96-8a8b-06d220099d04)
 
 ![Screenshot 2024-04-26 at 12 28 12 PM](https://github.com/prakrit338/AI-resume/assets/72137633/9c61a4a1-c40d-4347-8a26-76595703407f)
+<img width="697" alt="Screenshot 2024-04-26 at 12 38 24 PM" src="https://github.com/prakrit338/AI-resume/assets/72137633/613e2c62-8547-4c89-93ea-c3a4a6807376">
 
 
 ## Features
