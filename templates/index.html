@@ -35,18 +35,22 @@
                 </form>
             </div>
             {% if answers %}
-                {% for file_name, answer in answers %}
+                <form id="download-form" method="post" action="{{ url_for('download_answers') }}">
+                    <button type="submit" id="download-btn"><i class="fas fa-download"></i> Download Selected Answers</button>
+                    {% for file_name, answer in answers %}
                     <div class="answer">
-                        <h2><i class="fas fa-file-pdf"></i> {{ file_name }}.pdf</h2>
+                        <h2><input type="checkbox" name="selected_answers" value="{{ file_name }}"> {{ file_name }}.pdf</h2>
                         <pre>{{ answer | markdown }}</pre>
+                        <input type="hidden" name="answer-{{ file_name }}" value="{{ answer }}">
                     </div>
-                {% endfor %}
-            {% endif %}
+                    {% endfor %}
+                </form>
+                {% endif %}
         </div>
     </main>
     <footer>
         <div class="container">
-            <p>&copy; 2023 PDF Question Answering. All rights reserved.</p>
+            <p>&copy; 2023 Prakrit. All rights reserved.</p>
         </div>
     </footer>
     <script>
