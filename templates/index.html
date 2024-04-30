@@ -65,5 +65,16 @@
             form.submit();
         });
     </script>
+    <!-- Add the following code to display the "Process Next Batch" button -->
+    {% if more_pdfs %}
+    <div class="container">
+        <!-- Add a hidden input for the question field -->
+        <form method="post">
+            <input type="hidden" name="question" value="{{ question }}">
+            <input type="hidden" name="start_index" value="{{ start_index + 5 }}">
+            <button type="submit"><i class="fas fa-arrow-circle-down"></i> Process Next Batch</button>
+        </form>
+    </div>
+    {% endif %}
 </body>
 </html>

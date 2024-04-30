@@ -20,9 +20,8 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 app = Flask(__name__)
 Markdown(app)
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PDF_FOLDER_PATH = os.path.join(SCRIPT_DIR, "pdf")
-
+DESKTOP_PATH = os.path.join(os.path.expanduser("~"), "Desktop")
+PDF_FOLDER_PATH = os.path.join(DESKTOP_PATH, "files")
 
 def get_pdf_text(pdf_doc):
     text = ""
@@ -73,17 +72,30 @@ def index():
     if request.method == "POST":
         user_question = request.form["question"]
         answers = []
+
+        # Get list of PDF files
         if not os.path.exists(PDF_FOLDER_PATH):
             os.makedirs(PDF_FOLDER_PATH)
         pdf_files = [os.path.join(PDF_FOLDER_PATH, f) for f in os.listdir(PDF_FOLDER_PATH) if f.endswith(".pdf")]
-        for pdf_file in pdf_files:
+
+        # Get the current batch of PDFs to process
+        start_index = int(request.form.get("start_index", 0))
+        end_index = min(start_index + 5, len(pdf_files))
+        batch_files = pdf_files[start_index:end_index]
+
+        # Process each PDF in the batch
+        for pdf_file in batch_files:
             file_name = os.path.basename(pdf_file).split(".")[0]
             raw_text = get_pdf_text(pdf_file)
             text_chunks = get_text_chunks(raw_text)
             get_vector_store(text_chunks, file_name)
             answer = user_input(user_question, file_name)
             answers.append((file_name, answer))
-        return render_template("index.html", question=user_question, answers=answers)
+
+        # Determine if there are more PDFs to process
+        more_pdfs = end_index < len(pdf_files)
+
+        return render_template("index.html", question=user_question, answers=answers, start_index=start_index, more_pdfs=more_pdfs)
     return render_template("index.html")
 
 @app.route("/process_pdfs", methods=["POST"])
@@ -115,4 +127,4 @@ def download_answers():
     )
 
 if __name__ == "__main__":
-    app.run(debug=True, port = 5001)
+    app.run(debug=True)
