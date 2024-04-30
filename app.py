@@ -20,8 +20,8 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 app = Flask(__name__)
 Markdown(app)
 
-DESKTOP_PATH = os.path.join(os.path.expanduser("~"), "Desktop")
-PDF_FOLDER_PATH = os.path.join(DESKTOP_PATH, "files")
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PDF_FOLDER_PATH = os.path.join(SCRIPT_DIR, "pdf")
 
 def get_pdf_text(pdf_doc):
     text = ""
